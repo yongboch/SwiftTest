@@ -14,6 +14,7 @@
 		E2225EB11A65C28000EAD73C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2225EAF1A65C28000EAD73C /* LaunchScreen.xib */; };
 		E2225EBD1A65C28000EAD73C /* TestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2225EBC1A65C28000EAD73C /* TestTests.swift */; };
 		E2225EC91A684F9100EAD73C /* OrderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2225EC81A684F9100EAD73C /* OrderList.swift */; };
+		E2225ECF1A69FB9500EAD73C /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2225ECE1A69FB9500EAD73C /* Order.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		E2225EBB1A65C28000EAD73C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2225EBC1A65C28000EAD73C /* TestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTests.swift; sourceTree = "<group>"; };
 		E2225EC81A684F9100EAD73C /* OrderList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderList.swift; sourceTree = "<group>"; };
+		E2225ECE1A69FB9500EAD73C /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 		E2225E981A65C28000EAD73C = {
 			isa = PBXGroup;
 			children = (
+				E2225ECE1A69FB9500EAD73C /* Order.swift */,
 				E2225EC81A684F9100EAD73C /* OrderList.swift */,
 				E2225EA31A65C28000EAD73C /* Test */,
 				E2225EB91A65C28000EAD73C /* TestTests */,
@@ -217,6 +220,7 @@
 			files = (
 				E2225EA91A65C28000EAD73C /* ViewController.swift in Sources */,
 				E2225EA71A65C28000EAD73C /* AppDelegate.swift in Sources */,
+				E2225ECF1A69FB9500EAD73C /* Order.swift in Sources */,
 				E2225EC91A684F9100EAD73C /* OrderList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +413,7 @@
 				E2225EC21A65C28000EAD73C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E2225EC31A65C28000EAD73C /* Build configuration list for PBXNativeTarget "TestTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +422,7 @@
 				E2225EC51A65C28000EAD73C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
