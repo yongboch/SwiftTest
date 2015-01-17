@@ -14,8 +14,8 @@ class Order{
     var status:Int
     
     var userInfo = [String:AnyObject]()
-    var restaurant = [AnyObject]()
-    var dishes = [Dish]()
+    var restaurant = [String:AnyObject]()
+    var dishList = [Dish]()
     
     init(json:AnyObject){
         var order = json as Dictionary<String,AnyObject>
@@ -25,8 +25,11 @@ class Order{
         initUserInfo(order["address"]!)
         initDishes(order["dish"]!)
         
+        restaurant["Name"] = json["restaurant"]
+        
     }
     
+    ///init user information from json
     func initUserInfo(a:AnyObject){
         var address = a as Dictionary<String, String>
         //var name:String =
@@ -36,31 +39,41 @@ class Order{
             + address["city"]! + address["state"]!
             + address["zip"]!
     }
+    
+    ///init dishes array from json
     func initDishes(d:AnyObject){
-        
+        var dishes = d as Array<Dictionary<String,AnyObject>>
+        for item in dishes{
+            var dish = Dish(dish: item)
+            self.dishList.insert(dish, atIndex:0)
+        }
     }
     
+    ///section names in order
+    var sections:[String]{
+        get{
+            return ["User Info", "Restaurant", "Dishes"]
+        }
+    }
+    ///user info in order
     var userInfoTitle:[String]{
         get{
             return ["Name", "Tel", "Address"]
         }
     }
-    
+    ///restaurant info in order
     var restaurantTitle:[String] {
         get{
             return ["Name"]
         }
     }
     
-    
-    
+    ///return order detail
     var detail:[String:AnyObject]{
         get{
-            return ["User Info":userInfo, "Restaurant":"", "Dishes":""]
+            return ["User Info":self.userInfo, "Restaurant":self.restaurant, "Dishes":self.dishList]
         }
     }
-    
-    
     
 }
 

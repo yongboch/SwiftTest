@@ -17,42 +17,62 @@ class OrderList{
     }
     
     
-    var newOrders = [String:AnyObject]()
-    var activeOrders = [String:AnyObject]()
-    var finishOrders = [String:AnyObject]()
-    var jsonList = [String:AnyObject]()
+    var newOrders = [Order]()
+    var activeOrders = [Order]()
+    var finishOrders = [Order]()
     
+    ///orginal order list
+    var jsonList = [String:Order]()
+    
+    ///load json and convert it to order list
     func loadJson(json: Array<AnyObject>){
         for item in json{
-            var order = item as Dictionary<String, AnyObject>
-            var id = order["id"] as String
+            var order = Order(json: item)
+            var id = order.id
             jsonList[id] = order
         }
     }
-    var orderList:[String:AnyObject]{
+    
+    ///add new order to order list
+    func addJson(json:AnyObject){
+        var order = Order(json:json)
+        var id = order.id
+        jsonList[id] = order
+    }
+    
+    ///update order
+    func updateOrder(order:Order){
+        jsonList.updateValue(order, forKey: order.id)
+    }
+    
+    ///return dictionary of orders with sections
+    var orders:[String:AnyObject]{
         get {
             self.reOrderList()
             return ["New":newOrders, "Active":activeOrders, "Finish":finishOrders]
         }
     }
     
+    /// sections
     var typeList:Array<String>{
         get {
-            return Array(orderList.keys)
+            return ["New", "Active", "Finish"]
         }
     }
     
+    /// after data changed, refresh and reorder order list
     func reOrderList(){
-        for (key, value) in jsonList {
-            var order = value as Dictionary<String, AnyObject>
-            var status = order["status"] as Int
-            //var orderno = order["orderno"] as String
+        newOrders.removeAll(keepCapacity: false)
+        activeOrders.removeAll(keepCapacity: false)
+        finishOrders.removeAll(keepCapacity: false)
+        for (id, order) in jsonList {
+            var status = order.status
             if status == 4 {
-                newOrders[key] = order
+                newOrders.append(order)
             } else if status > 4 && status < 8 {
-                activeOrders[key] = order
+                activeOrders.append(order)
             } else {
-                finishOrders[key] = order
+                finishOrders.append(order)
             }
         }
     }
